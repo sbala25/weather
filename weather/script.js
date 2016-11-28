@@ -14,6 +14,11 @@ function crnt_weather(){
 	        document.getElementById("temp").innerHTML = data.current.temp_c;
 	        document.getElementById("humidity").innerHTML = data.current.humidity;
 	        document.getElementById("wind").innerHTML = data.current.wind_mph;
+	        document.getElementById("weatherImg").src= data.current.condition.icon;
+	        console.log(data.location.localtime);
+	        var d = data.location.localtime;
+	        d = d.split(" ");
+	        document.getElementById("date").src= data.current.condition.icon;
 	    }
 	};
 }
@@ -92,27 +97,6 @@ function startCity(){
  	}
 }
 
-function weartherImages(e){
-	e = e.toLowerCase();
-	console.log(e);
-	clear = e.indexOf("clear")> -1;
-	cloud = e.indexOf("cloud")> -1;
-	rain = e.indexOf("rain")> -1;
-	snow = e.indexOf("snow")> -1;
-	storm = e.indexOf("snow")> -1;
-	smoke = e.indexOf("smoke")> -1;
-	haze = e.indexOf("haze")> -1;
-	if (clear) image("clear");
-	if (cloud) image("cloud");
-	if (rain) image("rain");
-	if (snow) image("snow");
-	if (storm) image("storm");
-	if (smoke) image("smoke");
-	if (haze) image("haze");
-	function image(img){
-		document.getElementById("weatherImg").src="images/"+img+".png";
-	}
-}
 window.onload = function() {
 	countryList();
 };

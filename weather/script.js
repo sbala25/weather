@@ -4,12 +4,12 @@ function crnt_weather(){
  	for(var x=0; x<option.length; x++){
         if(option[x].selected) var city = option[x].text;
  	}
- 	var xmlhttp = new XMLHttpRequest();
+ 	var xmlhttps = new XMLHttpsRequest();
 	var url = "http://api.openweathermap.org/data/2.5/weather?q="+city+","+cuntry_srt+"&units=metric&appid=fdb965a12b44e06397546d0d8f8c1694";
 	xmlhttp.open("GET", url);
 	xmlhttp.send();
 	xmlhttp.onreadystatechange = function() {
-	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+	    if (xmlhttps.readyState == 4 && xmlhttps.status == 200) {
 	        var data = JSON.parse(xmlhttp.responseText);
 	        document.getElementById("temp").innerHTML = data.main.temp;
 	        document.getElementById("humidity").innerHTML = data.main.humidity;

@@ -4,19 +4,16 @@ function crnt_weather(){
  	for(var x=0; x<option.length; x++){
         if(option[x].selected) var city = option[x].text;
  	}
- 	var xmlhttps = new XMLHttpsRequest();
-	var url = "http://api.openweathermap.org/data/2.5/weather?q="+city+","+cuntry_srt+"&units=metric&appid=fdb965a12b44e06397546d0d8f8c1694";
+ 	var xmlhttp = new XMLHttpRequest();
+	var url = "https://api.apixu.com/v1/current.json?key=266904ef3f224f84b1481917162811&q="+city;
 	xmlhttp.open("GET", url);
 	xmlhttp.send();
 	xmlhttp.onreadystatechange = function() {
-	    if (xmlhttps.readyState == 4 && xmlhttps.status == 200) {
+	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 	        var data = JSON.parse(xmlhttp.responseText);
-	        document.getElementById("temp").innerHTML = data.main.temp;
-	        document.getElementById("humidity").innerHTML = data.main.humidity;
-	        document.getElementById("wind").innerHTML = data.wind.speed;
-	        document.getElementById("max_temp").innerHTML = data.main.temp_max;
-	        document.getElementById("min_temp").innerHTML = data.main.temp_min;
-	        weartherImages(data.weather[0].main);
+	        document.getElementById("temp").innerHTML = data.current.temp_c;
+	        document.getElementById("humidity").innerHTML = data.current.humidity;
+	        document.getElementById("wind").innerHTML = data.current.wind_mph;
 	    }
 	};
 }
